@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<GuestBookSystem.Models.Guestbook>
+@{
+    ViewBag.Title = "All";
+}
+<style>
+    .table {
+        font-family: 微软雅黑;
+    }
+
+        .table th,
+        .table td {
+            border: 1px solid #98bf21;
+        }
+
+        .table th {
+            color: #ffffff;
+            background-color: #008B8B;
+        }
+
+        .table td {
+            color: #000000;
+        }
+
+    .alt {
+        background-color: #EAF2D3;
+    }
+</style>
+
+<h2>你好，用户</h2>
+<ul class="nav nav-tabs">
+    <li role="presentation">@Html.ActionLink("申请添加留言", "Create")</li>
+    <li role="presentation"><a href="My">我的留言</a></li>
+    <li role="presentation"><a href="/Account/Logout">退出登陆</a></li>
+</ul>
+<h3>所有已审核留言</h3>
+
+<table class="table" id="111">
+    <caption>学生名单</caption>
+    <tr>
+        <th>留言人</th>
+        <th>留言时间</th>
+        <th>标题</th>
+        <th>留言内容</th>
+    </tr>
+    @foreach (var gb in Model)
+    {
+        if (gb.IsPass)
+        {
+            <tr>
+                <td>@gb.AuthorEmail</td>
+                <td>@gb.CreatedOn</td>
+                <td>@gb.Title</td>
+                <td>@gb.Content</td>
+            </tr>
+        }
+    }
+</table>

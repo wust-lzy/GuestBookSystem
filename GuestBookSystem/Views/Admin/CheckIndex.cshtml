@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "CheckMessage";
+}
+
+<h2>留言申请列表</h2>
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="/Admin">返回后台主页</a></li>
+    <li role="presentation"><a href="/Account/Logout">退出登陆（ok）</a></li>
+</ul>
+@foreach (var gb in Model)
+{
+    <p>留言人：@gb.AuthorEmail，时间：@gb.CreatedOn</p>
+    <p>标题：@gb.Title</p>
+    <p>内容：@gb.Content</p>
+    <p>
+        @Html.ActionLink("通过审核", "CheckMessage", new { id = gb.GuestbookId })
+    </p>
+    <hr />
+}
+

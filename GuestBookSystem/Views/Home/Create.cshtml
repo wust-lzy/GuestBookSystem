@@ -1,0 +1,32 @@
+﻿@model GuestBookSystem.Models.User
+@{
+    ViewBag.Title = "CreateUser";
+}
+<h2>创建用户账号</h2>
+<form action="/Home/Create" method="post">
+    <p>
+        你的邮箱：
+        @Html.TextBoxFor(g => g.Email)
+        @Html.ValidationMessageFor(g => g.Email)
+    </p>
+    <p>
+        设置你的用户名：
+        @Html.TextBoxFor(g => g.Name)
+        @Html.ValidationMessageFor(g => g.Name)
+    </p>
+    <p>
+        设置你的密码：
+        @Html.PasswordFor(g => g.Password, new { cols = 20, rows = 5 })
+        @Html.ValidationMessageFor(g => g.Password)
+    </p>
+    <input type="submit" value="提交注册" />
+    <input type="button" value="取消" onclick="window.location.href= '/Home'" />
+</form>
+@section scripts{
+    <script src="/Scripts/jquery.validate.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script>
+        window.onload = function () { document.getElementById("Content").innerHTML = "留言内容"; }
+    </script>
+}
+
